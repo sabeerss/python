@@ -1,13 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>My test document!</title>
-    <link rel="stylesheet" href="{% static "css\mystyles.css" %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Level Two</title>
+    <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
 </head>
 <body>
-<h1>index.html page </h1>
-<img src="{% static "images\nature-img.jpg" %}" alt="oh! wrong">
+    <h1>Welcome to django level two</h1>
+    <h2>Access records:</h2>
+
+    <div >
+        {% if access_records %}
+        <table>
+            <thead>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records %}
+            <tr>
+                <td> {{ acc.name }} </td>
+                <td> {{ acc.date }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>NO ACCESS RECORDS FOUND!</p>
+        {% endif %}
+    </div>
 </body>
 </html>
